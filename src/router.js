@@ -7,8 +7,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import('./views/Home')
+      name: 'login',
+      component: () => import('./views/Login')
     },
     {
       path: '/about',
@@ -19,6 +19,11 @@ export default new Router({
       path: '/account',
       name: 'account',
       component: () => import('./views/Account')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('./views/Register')
     }
   ]
 })

@@ -41,7 +41,8 @@
         data() {
             return {
                 items: [
-                    {title: 'Home', icon: 'dashboard', route: '/'},
+                    {title: 'Login', icon: 'dashboard', route: '/'},
+                    {title: 'Register', icon: 'dashboard', route: '/register'},
                     {title: 'About', icon: 'question_answer', route: '/about'},
                     {title: 'Account', icon: 'account_box', route: '/account'}
                 ]
