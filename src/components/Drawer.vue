@@ -12,7 +12,7 @@
                     </v-list-tile-content>
 
                     <v-list-tile-action>
-                        <v-btn icon>
+                        <v-btn icon @click="exit">
                             <v-icon>exit_to_app</v-icon>
                         </v-btn>
                     </v-list-tile-action>
@@ -46,6 +46,12 @@
                     {title: 'About', icon: 'question_answer', route: '/about'},
                     {title: 'Account', icon: 'account_box', route: '/account'}
                 ]
+            }
+        },
+        methods: {
+            exit() {
+                localStorage.removeItem('user');
+                this.$router.replace('/')
             }
         }
     }

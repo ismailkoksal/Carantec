@@ -1,9 +1,10 @@
 <template>
     <v-form ref="form" v-model="valid" lazy-validation>
-        <v-text-field v-model="name" :rules="surnameRules" label="Nom" required box></v-text-field>
-        <v-text-field v-model="name" :rules="nameRules" label="Prénom" required box></v-text-field>
+        <v-text-field v-model="lastName" :rules="lastNameRules" label="Nom" required box></v-text-field>
+        <v-text-field v-model="firstName" :rules="firstNameRules" label="Prénom" required box></v-text-field>
         <v-text-field v-model="email" :rules="emailRules" label="E-mail" required box></v-text-field>
-        <v-text-field v-model="number" :rules="numberRules" label="Téléphone portable" required box mask="## ## ## ## ##"></v-text-field>
+        <v-text-field v-model="number" :rules="numberRules" label="Téléphone portable" required box
+                      mask="##########"></v-text-field>
         <v-text-field v-model="username" :rules="usernameRules" label="Identifiant" required box></v-text-field>
         <v-text-field v-model="password" :rules="passwordRules" label="Mot de passe" required box></v-text-field>
         <v-divider class="mt-5"></v-divider>
@@ -31,13 +32,13 @@
         data() {
             return {
                 formHasErrors: false,
-                surname: '',
-                surnameRules: [
-                    v => !!v || 'Surname is required',
+                lastName: '',
+                lastNameRules: [
+                    v => !!v || 'Last name is required',
                 ],
-                name: '',
-                nameRules: [
-                    v => !!v || 'Name is required',
+                firstName: '',
+                firstNameRules: [
+                    v => !!v || 'First name is required',
                 ],
                 email: '',
                 emailRules: [
@@ -60,10 +61,16 @@
         },
         methods: {
             validate() {
-                this.formHasErrors = !this.$refs.form.validate()
+                this.formHasErrors = false;
+                if (this.$refs.form.validate()) {
+
+                }
+                else {
+                    this.formHasErrors = true
+                }
             },
             reset() {
-                this.formHasErrors = false
+                this.formHasErrors = false;
                 this.$refs.form.reset()
             },
             login() {

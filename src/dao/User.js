@@ -1,18 +1,11 @@
-const axios = require('axios')
+const axios = require('axios');
+import config from '../../config/config'
 
 export default class UserDao {
     static login(username, password) {
-        return axios.post('/user', {
+        return axios.post(`${config.baseURL}/user/login`, {
             username: username,
             password: password
-        }).then(response => {
-            console.log(response);
-        }).catch(error => {
-            console.log(error);
-        });
-    }
-
-    static create(data) {
-        return axios.post()
+        })
     }
 }
