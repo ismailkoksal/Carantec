@@ -10,7 +10,7 @@
                 <v-text-field v-model="username" :rules="usernameRules" :label="$t('personalData.username')" required></v-text-field>
                 <v-text-field :append-icon="show ? 'visibility' : 'visibility_off'"
                               :type="show ? 'text' : 'password'" @click:append="show = !show" v-model="password"
-                              :rules="passwordRules" :label="$t('personalData.password')" required></v-text-field>
+                              :rules="passwordRules" :label="$t('personalData.password')" counter required></v-text-field>
             </v-card-text>
             <v-divider class="mt-5"/>
             <v-card-actions>
@@ -55,7 +55,7 @@
                 ],
                 passwordRules: [
                     v => !!v || this.$t('rules.password'),
-                    v => (v && v.length >= 8) || 'Minimum 8 characters'
+                    v => (v && v.length >= 8) || this.$t('rules.mini8Char')
                 ]
             }
         },

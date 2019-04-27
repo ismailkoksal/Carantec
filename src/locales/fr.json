@@ -13,7 +13,8 @@
     "email": "L'émail est obligatoire",
     "number": "Le numéro de téléphone est obligatoire",
     "username": "L'identifiant est obligatoire",
-    "password": "Le mot de passe est obligatoire"
+    "password": "Le mot de passe est obligatoire",
+    "mini8Char": "8 caractères minimum"
   },
   "action": {
     "login": "Se connecter",

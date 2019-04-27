@@ -13,7 +13,8 @@
     "email": "Email is required",
     "number": "Phone number is required",
     "username": "Username is required",
-    "password": "Password is required"
+    "password": "Password is required",
+    "mini8Char": "Minimum 8 characters"
   },
   "action": {
     "login": "Log in",
