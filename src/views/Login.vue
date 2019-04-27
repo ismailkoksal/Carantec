@@ -1,21 +1,19 @@
 <template>
     <v-layout column>
-        <v-alert class="mb-3" :value="invalidLogin" type="error">L'identifiant et/ou le mot de passe saisis sont invalides, merci
-            d'essayer à nouveau.
-        </v-alert>
+        <v-alert class="mb-3" :value="invalidLogin" type="error">{{ $t('error.invalidLogin') }}</v-alert>
         <v-card>
             <v-form ref="form" v-model="valid" lazy-validation>
                 <v-card-text>
-                    <v-text-field v-model="username" :rules="usernameRules" label="Identifiant" required></v-text-field>
+                    <v-text-field v-model="username" :rules="usernameRules" :label="$t('personalData.username')" required></v-text-field>
                     <v-text-field :append-icon="show ? 'visibility' : 'visibility_off'"
                                   :type="show ? 'text' : 'password'" @click:append="show = !show" v-model="password"
-                                  :rules="passwordRules" label="Mot de passe" required></v-text-field>
+                                  :rules="passwordRules" :label="$t('personalData.password')" required></v-text-field>
                 </v-card-text>
-                <v-divider class="mt-4"></v-divider>
+                <v-divider class="mt-4"/>
                 <v-card-actions>
-                    <v-btn color="primary" flat @click="register">Register</v-btn>
-                    <v-spacer></v-spacer>
-                    <v-btn :loading="loading" :disabled="!valid" color="primary" flat @click="validate">Submit</v-btn>
+                    <v-btn color="primary" flat @click="register">{{ $t('action.signup') }}</v-btn>
+                    <v-spacer/>
+                    <v-btn :loading="loading" :disabled="!valid" color="primary" flat @click="validate">{{ $t('action.submit') }}</v-btn>
                 </v-card-actions>
             </v-form>
         </v-card>
@@ -34,12 +32,12 @@
                 show: false,
                 loading: false,
                 username: '',
-                usernameRules: [
-                    v => !!v || 'Username is required'
-                ],
                 password: '',
+                usernameRules: [
+                    v => !!v || this.$t('rules.username')
+                ],
                 passwordRules: [
-                    v => !!v || 'Password is required',
+                    v => !!v || this.$t('rules.password'),
                     v => (v && v.length >= 8) || 'Minimum 8 characters'
                 ]
             }

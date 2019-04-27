@@ -1,0 +1,28 @@
+{
+  "personalData": {
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "email": "Email",
+    "number": "Numéro de téléphone",
+    "username": "Identifiant",
+    "password": "Mot de passe"
+  },
+  "rules": {
+    "lastName": "Le nom est obligatoire",
+    "firstName": "Le prénom est obligatoire",
+    "email": "L'émail est obligatoire",
+    "number": "Le numéro de téléphone est obligatoire",
+    "username": "L'identifiant est obligatoire",
+    "password": "Le mot de passe est obligatoire"
+  },
+  "action": {
+    "login": "Se connecter",
+    "signup": "S'enregistrer",
+    "submit": "Valider"
+  },
+  "error": {
+    "invalidLogin": "L'identifiant et/ou le mot de passe saisis sont invalides, merci d'essayer à nouveau."
+  },
+  "drawer": {
+  }
+}

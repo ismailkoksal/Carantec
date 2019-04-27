@@ -1,0 +1,28 @@
+{
+  "personalData": {
+    "lastName": "Last name",
+    "firstName": "First name",
+    "email": "Email",
+    "number": "Phone number",
+    "username": "Username",
+    "password": "Password"
+  },
+  "rules": {
+    "lastName": "Last name is required",
+    "firstName": "First name is required",
+    "email": "Email is required",
+    "number": "Phone number is required",
+    "username": "Username is required",
+    "password": "Password is required"
+  },
+  "action": {
+    "login": "Log in",
+    "signup": "Sign up",
+    "submit": "Submit"
+  },
+  "error": {
+    "invalidLogin": "The username and/or password entered are invalid, please try again."
+  },
+  "drawer": {
+  }
+}

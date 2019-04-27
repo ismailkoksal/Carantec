@@ -18,7 +18,7 @@
                     </v-list-tile-action>
                 </v-list-tile>
                 <v-list-tile v-else>
-                    <v-btn block color="primary" @click="login">Se connecter</v-btn>
+                    <v-btn block color="primary" @click="login">{{ $t('action.login') }}</v-btn>
                 </v-list-tile>
             </v-list>
         </v-toolbar>
