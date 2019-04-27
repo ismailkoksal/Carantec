@@ -16,11 +16,10 @@
         name: 'App',
         components: {
             Toolbar
-        },
-        data() {
-            return {
-                //
-            }
         }
     }
 </script>
+
+<style>
+
+</style>

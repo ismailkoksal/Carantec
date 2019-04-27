@@ -1,6 +1,6 @@
 <template>
     <v-layout column>
-        <v-alert :value="invalidLogin" type="error">L'identifiant et/ou le mot de passe saisis sont invalides, merci
+        <v-alert class="mb-3" :value="invalidLogin" type="error">L'identifiant et/ou le mot de passe saisis sont invalides, merci
             d'essayer à nouveau.
         </v-alert>
         <v-card>
@@ -15,17 +15,7 @@
                 <v-card-actions>
                     <v-btn color="primary" flat @click="register">Register</v-btn>
                     <v-spacer></v-spacer>
-                    <v-slide-x-reverse-transition>
-                        <v-tooltip v-if="!valid" left>
-                            <template v-slot:activator="{ on }">
-                                <v-btn icon class="my-0" @click="reset" v-on="on">
-                                    <v-icon>refresh</v-icon>
-                                </v-btn>
-                            </template>
-                            <span>Refresh form</span>
-                        </v-tooltip>
-                    </v-slide-x-reverse-transition>
-                    <v-btn :disabled="!valid" color="primary" flat @click="validate">Submit</v-btn>
+                    <v-btn :loading="loading" :disabled="!valid" color="primary" flat @click="validate">Submit</v-btn>
                 </v-card-actions>
             </v-form>
         </v-card>
@@ -42,6 +32,7 @@
                 valid: true,
                 invalidLogin: false,
                 show: false,
+                loading: false,
                 username: '',
                 usernameRules: [
                     v => !!v || 'Username is required'
@@ -57,20 +48,21 @@
             validate() {
                 this.invalidLogin = false;
                 if (this.$refs.form.validate()) {
+                    this.loading = true;
                     userDao.login(this.username, this.password)
                         .then(response => {
                             if (response.data.length) {
-                                localStorage.setItem('user', JSON.stringify(response.data))
+                                this.$store.commit('setUser', response.data)
                             } else {
                                 this.invalidLogin = true;
                             }
+                            this.loading = false;
                         })
                 }
             },
             reset() {
                 this.$refs.form.reset()
-            }
-            ,
+            },
             register() {
                 this.$router.replace('/register')
             }

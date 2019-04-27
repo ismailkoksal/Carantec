@@ -8,4 +8,8 @@ export default class UserDao {
             password: password
         })
     }
+
+    static signup(data) {
+        return axios.post(`${config.baseURL}/user/signup`, data)
+    }
 }
