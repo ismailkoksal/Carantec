@@ -24,6 +24,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: () => import('./views/Register')
+    },
+    {
+      path: '/manifestations',
+      name: 'manifestations',
+      component: () => import('./views/Manifestations')
     }
   ]
 })

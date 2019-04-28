@@ -46,6 +46,7 @@
         data() {
             return {
                 items: [
+                    {title: 'Manifestations', icon: '', path: '/manifestations'},
                     {title: 'About', icon: 'question_answer', path: '/about'},
                     {title: 'Account', icon: 'account_box', path: '/account'}
                 ]

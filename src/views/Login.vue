@@ -50,7 +50,8 @@
                     userDao.login(this.username, this.password)
                         .then(response => {
                             if (response.data.length) {
-                                this.$store.commit('setUser', response.data)
+                                this.$store.commit('setUser', response.data);
+                                this.$router.replace('/manifestations')
                             } else {
                                 this.invalidLogin = true;
                             }
