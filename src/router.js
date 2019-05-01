@@ -11,16 +11,6 @@ export default new Router({
       component: () => import('./views/Login')
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/About')
-    },
-    {
-      path: '/account',
-      name: 'account',
-      component: () => import('./views/Account')
-    },
-    {
       path: '/register',
       name: 'register',
       component: () => import('./views/Register')
@@ -29,6 +19,16 @@ export default new Router({
       path: '/manifestations',
       name: 'manifestations',
       component: () => import('./views/Manifestations')
+    },
+    {
+      path: '/manifestation/:id',
+      name: 'view_manifestation',
+      component: () => import('./views/ViewManifestation')
+    },
+    {
+      path: '/reservations',
+      name: 'reservations',
+      component: () => import('./views/Reservations')
     }
   ]
 })

@@ -6,7 +6,15 @@ export default class ManifestationDao {
         return axios.get(`${config.baseURL}/manifestations`)
     }
 
-    static getInscrit(userId) {
-        return axios.get(`${config.baseURL}/manifestations?id=${userId}`)
+    static getReservation(userId) {
+        return axios.get(`${config.baseURL}/manifestations/user/${userId}`)
+    }
+
+    static getManifestationById(manifId) {
+        return axios.get(`${config.baseURL}/manifestation/${manifId}`)
+    }
+
+    static getAvis(manifId) {
+        return axios.get(`${config.baseURL}/manifestation/${manifId}/avis`)
     }
 }

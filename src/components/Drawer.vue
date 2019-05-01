@@ -39,16 +39,15 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex'
+    import {mapState} from 'vuex'
 
     export default {
         name: "Drawer",
         data() {
             return {
                 items: [
-                    {title: 'Manifestations', icon: '', path: '/manifestations'},
-                    {title: 'About', icon: 'question_answer', path: '/about'},
-                    {title: 'Account', icon: 'account_box', path: '/account'}
+                    {title: 'Manifestations', icon: 'star', path: '/manifestations'},
+                    {title: 'Mes réservations', icon: 'favorite', path: '/reservations'}
                 ]
             }
         },
@@ -60,7 +59,7 @@
         },
         methods: {
             exit() {
-                this.$store.commit('deleteUser');
+                this.$store.commit('logout');
                 this.$router.replace('/')
             },
             login() {
