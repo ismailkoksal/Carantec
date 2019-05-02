@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { createModule } from 'vuex-toast'
+
+import 'vuex-toast/dist/vuex-toast.css'
 
 Vue.use(Vuex);
 
@@ -21,5 +24,18 @@ export default new Vuex.Store({
             state.currentUser = [];
             state.isUserLogged = localStorage.getItem('user') !== null
         }
+    },
+    getters: {
+        getUserStatus: state => {
+            return state.isUserLogged
+        },
+        getCurrentUser: state => {
+            return state.currentUser
+        }
+    },
+    modules: {
+        toast: createModule({
+            dismissInterval: 8000
+        })
     }
-})
+});

@@ -1,5 +1,6 @@
 <template>
     <v-container fluid>
+        <toast position="s"></toast>
         <v-card class="mb-3">
             <v-img :src="manifestation[0].affiche"></v-img>
             <v-card-title primary-title>
@@ -17,7 +18,8 @@
                 <v-form ref="form" v-model="valid" lazy-validation>
                     <v-layout align-center>
                         <v-flex xs12 md6>
-                            <v-select v-model="select" :rules="selectRules" :items="nbPersonnes" label="Personnes" required class="mr-3"></v-select>
+                            <v-select v-model="select" :rules="selectRules" :items="nbPersonnes" label="Personnes"
+                                      required class="mr-3"></v-select>
                         </v-flex>
                         <v-flex xs12 md6>
                             <v-btn color="primary" @click="validate">Réserver - {{ manifestation[0].prix }}€</v-btn>
@@ -46,6 +48,9 @@
     import manifestationDao from '../dao/Manifestation'
     import userDao from '../dao/User'
     import {mapState} from 'vuex'
+    import {mapActions} from 'vuex'
+    import {ADD_TOAST_MESSAGE} from 'vuex-toast'
+    import {Toast} from 'vuex-toast'
 
     export default {
         name: "ViewManifestation",
@@ -53,7 +58,7 @@
             return {
                 valid: true,
                 select: '',
-                selectRules: [v => !!v || 'Item is required'],
+                selectRules: [v => !!v || 'Required'],
                 manifestation: [],
                 avis: [],
                 nbPersonnes: [1, 2, 3, 4]
@@ -74,14 +79,37 @@
                 if (this.$refs.form.validate()) {
                     if (this.isUserLogged) {
                         userDao.reserver(this.currentUser[0].id, this.$route.params.id, this.select)
+                            .then(response => {
+                                this.sendNotification(response.data, 'success')
+                            }).catch(error => {
+                                this.sendNotification(error, 'danger')
+                            }
+                        )
                     } else {
                         this.$router.push('/')
                     }
                 }
+            },
+
+            sendNotification(text, type) {
+                this.addToast({
+                    text,
+                    type: type,
+                    dismissAfter: 10000
+                })
             }
         },
         computed: {
-            ...mapState(['currentUser', 'isUserLogged'])
+            ...
+                mapState(['currentUser', 'isUserLogged']),
+            ...
+                mapActions({
+                    addToast: ADD_TOAST_MESSAGE
+                })
+        }
+        ,
+        components: {
+            Toast
         }
     }
 </script>

@@ -13,12 +13,12 @@ export default class UserDao {
         return axios.post(`${config.baseURL}/user`, data)
     }
 
-    static setAvis(userId, manifId, avis, note) {
+    static setAvis(avis, note, userId, manifId) {
         return axios.post(`${config.baseURL}/user/avis`, {
+            avis: avis,
+            note: note,
             userId: userId,
             manifId: manifId,
-            avis: avis,
-            note: note
         })
     }
 
